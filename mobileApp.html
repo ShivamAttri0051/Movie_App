@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Search App</title>
+</head>
+
+<body>
+    <h1>Movie Search</h1>
+    <input type="text" id="searchInput" placeholder="Enter a movie title">
+    <button id="searchButton">Search</button>
+    <div id="movieInfo"></div>
+    <script>
+        const apiKey = 'YOUR_API_KEY';
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const movieInfo = document.getElementById('movieInfo');
+
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value;
+            if (searchTerm) {
+                fetch(`http://www.omdbapi.com/?apikey=102166753`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.Response === 'True') {
+                            const movieData = `
+                        <h2>${data.Title}</h2>
+                        <p><strong>Year:</strong> ${data.Year}</p>
+                        <p><strong>Director:</strong> ${data.Director}</p>
+                        <p><strong>Plot:</strong> ${data.Plot}</p>
+                        <img src="${data.Poster}" alt="${data.Title} Poster">
+                    `;
+                            movieInfo.innerHTML = movieData;
+                        } else {
+                            movieInfo.innerHTML = '<p>No movie found.</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        movieInfo.innerHTML = '<p>An error occurred. Please try again later.</p>';
+                    });
+            }
+        });
+
+    </script>
+</body>
+
+</html>
