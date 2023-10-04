@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch data</title>
+</head>
+<body>
+  <div id="root">
+
+  </div>
+  <script>
+    let rootElement = document.getElementById("root")
+    // #1
+    // fetch("https://reqres.in/api/users?page=2")
+    //     .then((response)=>response.json())
+    //     .then(data=>{
+    //         console.log(data)
+    //         console.log(data.data)
+    //     })
+    //     .catch(error => {
+    //         console.error("There was an error fetching the data.", error)
+    //     })
+    // #2
+    fetch("https://reqres.in/api/users?page=2")
+        .then(function(response){
+            return response.json()
+        })
+        .then(function(resObj){
+            console.log(resObj)
+            printdata(resObj.data)
+        })
+        .catch(function(error){
+            console.error("There was an error fetching the data.", error)
+        })
+    function printData(data){
+        data.foreach(function(item){
+            let usercard = document.createElement("div")
+            let userImage = document.createElement("img")
+            userImage.src = item.avatar
+
+            let userName = document.createElement("p")
+            userName.textContent = item.first_name + " " + item.last_name
+
+            let userid = document.createElement("p")  
+            userid.textContent = item.id
+
+            let useremail = document.createElement("h4")
+            useremail.textContent = item.email
+
+            usercard.append(
+                userImage,
+                userName,
+                userid,
+                useremail
+            )
+            rootElement.append(usercard)
+
+            
+        })
+    }
+  </script>  
+</body>
+</html>
