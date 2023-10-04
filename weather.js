@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+const apiKey = 'https://developers.google.com/maps/documentation/embed/get-api-key';
 
 document.addEventListener('DOMContentLoaded', () => {
     const cityInput = document.getElementById('cityInput');
