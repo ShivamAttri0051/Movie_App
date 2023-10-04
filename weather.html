@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        section {
+            width: 45%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+        }
+
+        #weatherDetails {
+            text-align: center;
+        }
+
+        #weatherIcon img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #temperature {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #map {
+            text-align: center;
+        }
+
+        #googleMap {
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Weather App</h1>
+        <input type="text" id="cityInput" placeholder="Enter city name">
+        <button id="searchButton">Search</button>
+    </header>
+    <main>
+        <section id="weatherDetails">
+            <h2>Weather Details</h2>
+            <div id="weatherIcon"></div>
+            <div id="temperature"></div>
+            <div id="wind"></div>
+            <div id="clouds"></div>
+            <div id="sunrise"></div>
+            <div id="sunset"></div>
+        </section>
+        <section id="map">
+            <h2>City Map</h2>
+            <div id="googleMap"></div>
+        </section>
+    </main>
+    <script src="./weather.js"></script>
+</body>
+
+</html>
